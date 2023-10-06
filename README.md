@@ -24,7 +24,7 @@ exporting your media library to a Kodi:
 - Indexing NFO files to a SQLite database
 
     ```txt
-        poetry run python app.py update_media_database  [NFO_OR_DIR_PATH_TO_PROCESS ...]
+    poetry run python app.py update_media_database  [NFO_OR_DIR_PATH_TO_PROCESS ...]
     ```
 
     > **Info**
@@ -39,7 +39,7 @@ exporting your media library to a Kodi:
 - Launching the media dashboard of the media SQLite database specified in the configuration file:
 
     ```txt
-        poetry run python app.py launch_media_dashboard
+    poetry run python app.py launch_media_dashboard
     ```
 
     > **Info**
