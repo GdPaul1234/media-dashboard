@@ -115,7 +115,7 @@ class MediaDatabaseUpdater:
         with self._connection as con:
             cur = con.execute(
                 "INSERT INTO movies(title,year,rating,mpaa) VALUES(:title,:year,:rating,:mpaa) ON CONFLICT DO UPDATE SET id=id RETURNING id",
-                nfo.dict(include={'title', 'year', 'rating', 'mpaa'})
+                nfo.model_dump(include={'title', 'year', 'rating', 'mpaa'})
             )
             movie_id, = cur.fetchone()
             self._insert_common_subfields(nfo, media_id=movie_id, media_type='movie')
@@ -129,7 +129,7 @@ class MediaDatabaseUpdater:
         with self._connection as con:
             cur = con.execute(
                 "INSERT INTO episodes(serie_id,title,season,episode,year,rating,mpaa) VALUES(:serie_id,:title,:season,:episode,:year,:rating,:mpaa) ON CONFLICT DO UPDATE SET id=id RETURNING id",
-                {'serie_id': tvshow_id} | nfo.dict(include={'title', 'season', 'episode', 'year', 'rating', 'mpaa'})
+                {'serie_id': tvshow_id} | nfo.model_dump(include={'title', 'season', 'episode', 'year', 'rating', 'mpaa'})
             )
             serie_id, = cur.fetchone()
             self._insert_common_subfields(nfo, media_id=serie_id, media_type='episode')
@@ -139,7 +139,7 @@ class MediaDatabaseUpdater:
         with self._connection as con:
             cur = con.execute(
                 "INSERT INTO series(title,year,rating,mpaa) VALUES(:title,:year,:rating,:mpaa) ON CONFLICT DO UPDATE SET id=id RETURNING id",
-                nfo.dict(include={'title', 'year', 'rating', 'mpaa'})
+                nfo.model_dump(include={'title', 'year', 'rating', 'mpaa'})
             )
             tvshow_id, = cur.fetchone()
             self._insert_common_subfields(nfo, media_id=tvshow_id, media_type='serie')
