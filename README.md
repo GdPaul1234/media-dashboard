@@ -2,6 +2,8 @@
 
 Get some stats from your exported Kodi / Synology VideoStation media library
 
+![Example dashboard](screenshot.png)
+
 ## Installation
 
 After installing poetry, just run the following command in the project root:
